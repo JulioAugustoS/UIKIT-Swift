@@ -9,10 +9,47 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var linguagem: UISegmentedControl!
+    @IBOutlet weak var nome: UITextField!
+    @IBOutlet weak var nota: UIStepper!
+    @IBOutlet weak var versao: UISlider!
+    @IBOutlet weak var gosta: UISwitch!
+    @IBOutlet weak var liguagemEscolhidaReturn: UILabel!
+    
+    @IBOutlet weak var notaResult: UILabel!
+    @IBOutlet weak var versaoResult: UILabel!
+    
+    @IBAction func linguagemChanged(_ sender: Any) {
+        liguagemEscolhidaReturn.text = "\(linguagem.titleForSegment(at: linguagem.selectedSegmentIndex)!)"
+    }
 
+    @IBAction func chageNota(_ sender: Any) {
+        notaResult.text = "\(Int(nota.value))"
+    }
+    
+    @IBAction func chageVersao(_ sender: Any) {
+        versaoResult.text = "\(Int(versao.value))"
+    }
+    
+    // Salvar
+    @IBAction func salvar(_ sender: Any) {
+        var msg: String
+        var tipo: String
+        
+        if linguagem.selectedSegmentIndex >= 0 {
+            tipo = linguagem.titleForSegment(at: linguagem.selectedSegmentIndex)!
+            msg = "Pesquisa Salva com Sucesso!"
+        }else{
+            
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        notaResult.text = "0"
+        versaoResult.text = "1"
     }
 
     override func didReceiveMemoryWarning() {
