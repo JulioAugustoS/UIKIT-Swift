@@ -34,15 +34,27 @@ class ViewController: UIViewController {
     
     // Salvar
     @IBAction func salvar(_ sender: Any) {
-        var msg: String
-        var tipo: String
+        var msg:String
+        var tipo:String
         
         if linguagem.selectedSegmentIndex >= 0 {
             tipo = linguagem.titleForSegment(at: linguagem.selectedSegmentIndex)!
             msg = "Pesquisa Salva com Sucesso!"
         }else{
-            
+            tipo = ""
+            msg = "Antes de salvar escolha o tipo de linguagem!"
         }
+        
+        let alerta = UIAlertController(
+            title: "Atenção",
+            message: msg,
+            preferredStyle: UIAlertControllerStyle.alert)
+        
+        alerta.addAction(UIAlertAction(
+            title: "OK",
+            style: UIAlertActionStyle.default,
+            handler: nil))
+        
     }
     
     
